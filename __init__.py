@@ -6,7 +6,10 @@ import image
 class TestPusher(Pusher):
     async def push(self, content: Struct, to: str) -> PushResult:
         try:
-            print(f'=> Pushing {content} to {to}')
+            print(f'This article will be pushed to {to}: ')
+            print('==================')
+            print(content)
+            print('==================')
             ok = True
             _e = None
         except Exception as e:
