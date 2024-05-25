@@ -8,7 +8,7 @@ class TestPusher(Pusher):
         try:
             print(f'This article will be pushed to {to}: ')
             print('==================')
-            print(content)
+            print(content.asmarkdown())
             print('==================')
             ok = True
             _e = None
