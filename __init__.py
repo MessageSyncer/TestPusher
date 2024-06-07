@@ -3,7 +3,7 @@ import image
 
 
 class MockAPI():
-    def push(string):
+    def push(self, string):
         return True
 
 
