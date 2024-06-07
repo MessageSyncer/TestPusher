@@ -2,17 +2,16 @@ from model import *
 import image
 
 
+class MockAPI():
+    def push(string):
+        return True
+
+
 class TestPusher(Pusher):
-    async def push(self, content: Struct, to: str) -> PushResult:
-        try:
-            # print(f'This article will be pushed to {to}: ')
-            # print('==================')
-            # print(content.asmarkdown())
-            # print('==================')
-            self.logger.info('Pushing...')
-            ok = True
-            _e = None
-        except Exception as e:
-            ok = False
-            _e = e
-        return PushResult(ok, _e)
+    def __init__(self, id=None) -> None:
+        super().__init__(id)
+        self.api = MockAPI()
+
+    async def push(self, content: Struct, to: str):
+        if not self.api.push(str(content)):
+            raise Exception('Failed to push to mockAPI')
