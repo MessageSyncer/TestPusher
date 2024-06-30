@@ -3,7 +3,7 @@ import image
 
 
 class MockAPI():
-    def push(self, string):
+    def push(self, string, id):
         return True
 
 
@@ -13,5 +13,5 @@ class TestPusher(Pusher):
         self.api = MockAPI()
 
     async def push(self, content: Struct, to: str):
-        if not self.api.push(str(content)):
+        if not self.api.push(str(content), self.id):
             raise Exception('Failed to push to mockAPI')
